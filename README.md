@@ -1,4 +1,5 @@
-## resume-react
+## resume-react 
+[Live examples & docs](https://kevin-k.github.io/resume-react/?path=/story/full-resume-example--readme-example)
 
 A component library built around [JSONResume](https://jsonresume.org/) data to help craft a resume
 for web and print content.
