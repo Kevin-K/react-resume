@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { row, column, compactList } from '../styles';
-import { yearMonthDayDate, monthYearString } from '../timespan';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import { row, column, compactList } from "../styles";
+import { yearMonthDayDate, monthYearString } from "../timespan";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   row: row(theme),
   compactList: compactList(theme),
   title: {
@@ -14,13 +14,12 @@ const useStyles = makeStyles(theme => ({
   },
   timespan: {
     ...column(theme),
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
 }));
 
 /**
  * Resume entry for work experience.
- * Follows the JSONSchema format for work entries
  */
 const Work = ({
   name,
@@ -39,7 +38,7 @@ const Work = ({
   const startString = monthYearString(sDate);
 
   // endDate is not (could be presently employed)
-  const endString = eDate ? monthYearString(eDate) : 'Present';
+  const endString = eDate ? monthYearString(eDate) : "Present";
 
   return (
     <div>
@@ -63,7 +62,7 @@ const Work = ({
       {/* Work highlights */}
       {highlights.length ? (
         <ul className={classes.compactList}>
-          {highlights.map(entry => (
+          {highlights.map((entry) => (
             <li key={entry}>{entry}</li>
           ))}
         </ul>
@@ -73,16 +72,20 @@ const Work = ({
 };
 
 Work.propTypes = {
+  /** Company name. */
   name: PropTypes.string.isRequired,
+  /** Job Title/Role. */
   position: PropTypes.string.isRequired,
+  /** Start date of volunteering. Format: YYYY-MM-DD. */
   startDate: PropTypes.string.isRequired,
-  url: PropTypes.string,
+  /** End date of volunteering. "Present" is used if not provided. Format: YYYY-MM-DD. */
   endDate: PropTypes.string,
+  /** Website for company. */
+  url: PropTypes.string,
 };
 
 Work.defaultProps = {
-  position: '',
-  url: '',
-  endDate: '',
+  url: "",
+  endDate: "",
 };
 export default Work;

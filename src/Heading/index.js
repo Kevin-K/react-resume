@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   primary: {},
   secondary: {
-    '& > *': {
-      display: 'inline-block',
+    "& > *": {
+      display: "inline-block",
     },
-    '& > :not(:last-child)': {
+    "& > :not(:last-child)": {
       paddingRight: theme.spacing(),
     },
-    '@media print': {
-      '& > a': {
-        color: 'black',
-        textDecoration: 'none',
+    "@media print": {
+      "& > a": {
+        color: "black",
+        textDecoration: "none",
       },
     },
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
  */
 const Location = ({ address, city, region, postalCode, countryCode }) => (
   <span>
-    {address} {city} {region}, {postalCode} {countryCode}{' '}
+    {address} {city} {region}, {postalCode} {countryCode}{" "}
   </span>
 );
 
@@ -41,16 +41,15 @@ Location.propTypes = {
 };
 
 Location.defaultProps = {
-  address: '1 Main St',
-  city: 'New York',
-  region: 'NY',
-  postalCode: '01234',
-  countryCode: 'USA',
+  address: "1 Main St",
+  city: "New York",
+  region: "NY",
+  postalCode: "01234",
+  countryCode: "USA",
 };
 
 /**
- * Resume heading block, generated from the JSONResume schema's basic
- * (sub-object) specification.
+ * The Header of the resume, describes the resume owner.
  */
 const Heading = ({ name, title, email, phone, location, disableContact }) => {
   const classes = useStyles();
@@ -77,19 +76,31 @@ const Heading = ({ name, title, email, phone, location, disableContact }) => {
 };
 
 Heading.propTypes = {
+  /** Full name. */
   name: PropTypes.string,
+  /** Job Title. */
   title: PropTypes.string,
+  /** Telephone number. ex: 555-555-5555 */
   phone: PropTypes.string,
+  /** Email address. ex: user@example.com */
   email: PropTypes.string,
-  location: PropTypes.shape(Location.propTypes),
+  /** Locale data. For US locations, region demarks state. */
+  location: PropTypes.shape({
+    address: PropTypes.string,
+    city: PropTypes.string,
+    region: PropTypes.string,
+    postalCode: PropTypes.string,
+    countryCode: PropTypes.string,
+  }),
+  /** Do not display contact info. */
   disableContact: PropTypes.bool,
 };
 
 Heading.defaultProps = {
-  name: '',
-  title: '',
-  phone: '',
-  email: '',
+  name: "",
+  title: "",
+  phone: "",
+  email: "",
   disableContact: false,
   location: Location.defaultProps,
 };

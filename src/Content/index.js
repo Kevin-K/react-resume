@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { row, column, fixedColumn } from '../styles';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import { row, column, fixedColumn } from "../styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: row(theme),
   // Even though this is a column, we want a fixed width
   title: {
@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
   content: {
     ...column(theme),
     // Put a margin between each child element
-    '& > :not(:last-child)': {
+    "& > :not(:last-child)": {
       marginBottom: theme.spacing(),
 
       // mobile: add space between content for mobile
-      [theme.breakpoints.down('sm')]: {
-        '@media not print': {
+      [theme.breakpoints.down("sm")]: {
+        "@media not print": {
           marginBottom: theme.spacing(2),
         },
       },
@@ -29,7 +29,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 /**
- * Resume content block.
+ * Content container block. Places a title to the left of the content,
+ * and when rendered on smaller screen real estate it moves the
+ * title above the content.
  */
 const Content = ({ title, children }) => {
   const classes = useStyles();
@@ -46,12 +48,13 @@ const Content = ({ title, children }) => {
 };
 
 Content.propTypes = {
+  /** Title for the content Container. */
   title: PropTypes.string,
   children: PropTypes.node,
 };
 
 Content.defaultProps = {
-  title: '',
-  children: '',
+  title: "",
+  children: "",
 };
 export default Content;

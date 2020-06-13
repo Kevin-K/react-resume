@@ -1,14 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Work from '../Work';
+import React from "react";
+import PropTypes from "prop-types";
+import Work from "../Work";
+
 /**
  * Resume entry for education.
- * Following the JSONSchema format, the education schema
- * can be mapped to the work schema where:
- * institution -> name
- * studyType & area -> position
- * gpa -> description
- * courses -> highlights
  */
 const Education = ({
   institution,
@@ -30,18 +25,23 @@ const Education = ({
 };
 
 Education.propTypes = {
+  /** Name of education institution. */
   institution: PropTypes.string,
+  /** Type of degree/certificate. */
   studyType: PropTypes.string,
+  /** Field of study. */
   area: PropTypes.string,
+  /** Grade point averge. */
   gpa: PropTypes.string,
+  /** Course names. */
   courses: PropTypes.arrayOf(PropTypes.string),
 };
 
 Education.defaultProps = {
-  institution: '',
-  studyType: '',
-  area: '',
-  gpa: '',
+  institution: "",
+  studyType: "",
+  area: "",
+  gpa: "",
   courses: [],
 };
 
